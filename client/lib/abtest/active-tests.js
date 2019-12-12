@@ -118,8 +118,8 @@ export default {
 	showBusinessPlanPopular: {
 		datestamp: '20191211',
 		variations: {
-			variantShowBizPopular: 20,
-			control: 80,
+			variantShowBizPopular: 50,
+			control: 50,
 		},
 		defaultVariation: 'control',
 		allowExistingUsers: true,
