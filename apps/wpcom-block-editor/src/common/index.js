@@ -1,7 +1,6 @@
 /**
  * Internal dependencies
  */
-import './disable-nux-tour';
 import './reorder-block-categories';
 import './rich-text';
 import './style.scss';
