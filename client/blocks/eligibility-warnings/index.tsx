@@ -14,7 +14,7 @@ import Gridicon from 'components/gridicon';
 import TrackComponentView from 'lib/analytics/track-component-view';
 import { recordTracksEvent } from 'state/analytics/actions';
 import { getEligibility, isEligibleForAutomatedTransfer } from 'state/automated-transfer/selectors';
-import { getSelectedSiteId } from 'state/ui/selectors';
+import { getSelectedSiteId, getSelectedSiteSlug } from 'state/ui/selectors';
 import { Button, Card } from '@automattic/components';
 import QueryEligibility from 'components/data/query-atat-eligibility';
 import HoldList, { hasBlockingHold } from './hold-list';
@@ -39,6 +39,7 @@ export const EligibilityWarnings = ( {
 	isPlaceholder,
 	onProceed,
 	siteId,
+	siteSlug,
 	translate,
 }: Props ) => {
 	const warnings = eligibilityData.eligibilityWarnings || [];
@@ -47,6 +48,8 @@ export const EligibilityWarnings = ( {
 	const classes = classNames( 'eligibility-warnings', {
 		'eligibility-warnings__placeholder': isPlaceholder,
 	} );
+
+	const upgradeUrl = siteRequiresUpgrade( listHolds ) ? `/checkout/${ siteSlug }/business` : null;
 
 	return (
 		<div className={ classes }>
@@ -77,7 +80,8 @@ export const EligibilityWarnings = ( {
 					<Button
 						primary={ true }
 						disabled={ isProceedButtonDisabled( isEligible, listHolds ) }
-						onClick={ onProceed }
+						href={ upgradeUrl }
+						onClick={ ! upgradeUrl ? onProceed : undefined }
 					>
 						{ getProceedButtonText( listHolds, translate ) }
 					</Button>
@@ -103,12 +107,17 @@ function isProceedButtonDisabled( isEligible: boolean, holds: string[] ) {
 	return ! canHandleHoldsAutomatically && ! isEligible;
 }
 
+function siteRequiresUpgrade( holds: string[] ) {
+	return holds.includes( 'NO_BUSINESS_PLAN' );
+}
+
 EligibilityWarnings.defaultProps = {
 	onProceed: noop,
 };
 
 const mapStateToProps = ( state: object ) => {
 	const siteId = getSelectedSiteId( state );
+	const siteSlug = getSelectedSiteSlug( state );
 	const eligibilityData = getEligibility( state, siteId );
 	const isEligible = isEligibleForAutomatedTransfer( state, siteId );
 	const dataLoaded = !! eligibilityData.lastUpdate;
@@ -118,6 +127,7 @@ const mapStateToProps = ( state: object ) => {
 		isEligible,
 		isPlaceholder: ! dataLoaded,
 		siteId,
+		siteSlug,
 	};
 };
 
