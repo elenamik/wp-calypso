@@ -8,7 +8,6 @@ import {
 	createStripeMethod,
 	createApplePayMethod,
 } from '@automattic/composite-checkout';
-import { WPCheckoutWrapper } from '@automattic/composite-checkout-wpcom';
 import { useTranslate } from 'i18n-calypso';
 import debugFactory from 'debug';
 import { useSelector } from 'react-redux';
@@ -21,6 +20,7 @@ import notices from 'notices';
 import getUpgradePlanSlugFromPath from 'state/selectors/get-upgrade-plan-slug-from-path';
 import { isJetpackSite } from 'state/sites/selectors';
 import isAtomicSite from 'state/selectors/is-site-automated-transfer';
+import { CompositeCheckoutWrapper } from './composite-checkout-wrapper';
 
 const debug = debugFactory( 'calypso:composite-checkout-container' );
 
@@ -228,7 +228,7 @@ export default function CompositeCheckoutContainer( {
 	};
 
 	return (
-		<WPCheckoutWrapper
+		<CompositeCheckoutWrapper
 			siteSlug={ siteSlug }
 			getCart={ getCart }
 			setCart={ setCart }
