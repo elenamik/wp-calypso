@@ -23,18 +23,18 @@ export default () => {
 
 	const homepageTemplates = templates.filter( template => template.category === 'home' );
 
-	const [ previewedTemplate, setPreviewedTemplate ] = useState< string | null >( null );
+	const [ previewedTemplate, setPreviewedTemplate ] = useState< string | undefined >();
 	return (
 		<div
 			className="page-template-modal__list" // eslint-disable-line wpcalypso/jsx-classname-namespace
 		>
 			<TemplateSelectorControl
+				instanceId="gutenboarding-design-picker"
 				label={ NO__( 'Layout', 'full-site-editing' ) }
 				templates={ homepageTemplates }
 				blocksByTemplates={ {} /* Unneeded, since we're setting `useDynamicPreview` to `false` */ }
 				onTemplateSelect={ setPreviewedTemplate }
 				useDynamicPreview={ false }
-				siteInformation={ undefined }
 				selectedTemplate={ previewedTemplate }
 				// handleTemplateConfirmation={ this.handleConfirmation }
 			/>
