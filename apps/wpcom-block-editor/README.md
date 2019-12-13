@@ -60,7 +60,7 @@ The block editor integration provides features for the following type of sites a
 
 - [`disable-nux-tour`](./src/wpcom/disable-nux-tour.js): Disables the welcome guide that is displayed on first use.
 - [`reorder-block-categories`](./src/wpcom/reorder-block-categories.js): Moves Jetpack and CoBlocks Block Categories below Core Categories.
-- [`tracking`](./src/wpcom/tracking.js): Adds analytics around specific user actions for Simple, Jetpack and Atomic sites.
+- [`tracking`](./src/wpcom/tracking.js): Adds analytics around specific user actions.
 - [`unregister-experimental-blocks`](./src/wpcom/unregister-experimental-blocks.js): Removes some experimental blocks from the Gutenberg Plugin.
 
 ### `calypso`
