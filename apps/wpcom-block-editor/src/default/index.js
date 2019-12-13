@@ -3,7 +3,6 @@
  */
 import './rich-text';
 import './switch-to-classic';
-import './tracking';
 
 /**
  * Style dependencies

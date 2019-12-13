@@ -55,13 +55,13 @@ The block editor integration provides features for the following type of sites a
 
 - [`rich-text`](./src/default/rich-text.js): Extensions for the Rich Text toolbar with the Calypso buttons missing on Core (i.e. underline, justify).
 - [`switch-to-classic`](./src/default/switch-to-classic.js): Appends a button to the "More tools" menu for switching to the classic editor.
-- [`tracking`](./src/default/tracking.js): Adds analytics around specific user actions for Simple, Jetpack and Atomic sites.
 
 ### `wpcom`
 
 - [`disable-nux-tour`](./src/wpcom/disable-nux-tour.js): Disables the welcome guide that is displayed on first use.
-- [`unregister-experimental-blocks`](./src/wpcom/unregister-experimental-blocks.js): Removes some experimental blocks from the Gutenberg Plugin.
 - [`reorder-block-categories`](./src/wpcom/reorder-block-categories.js): Moves Jetpack and CoBlocks Block Categories below Core Categories.
+- [`tracking`](./src/wpcom/tracking.js): Adds analytics around specific user actions for Simple, Jetpack and Atomic sites.
+- [`unregister-experimental-blocks`](./src/wpcom/unregister-experimental-blocks.js): Removes some experimental blocks from the Gutenberg Plugin.
 
 ### `calypso`
 
